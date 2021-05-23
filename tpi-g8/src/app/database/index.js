@@ -2,6 +2,7 @@ const dbConfig = require("./db.config.js");
 const Sequelize = require("sequelize");
 const productos = require("../models/productos.js");
 const produccion = require("../models/produccion.js");
+const ventas = require("../models/ventas.js");
 
 //Instancia de sequelize para la conexion a la BBDD
 const sequelize = new Sequelize(dbConfig.DB, dbConfig.USER, dbConfig.PASSWORD, {
@@ -38,7 +39,7 @@ sequelize
   //Definicion de los modelos a utilizar
   const Productos = productos(sequelize, Sequelize);
   const Produccion = produccion(sequelize, Sequelize);
-
+  const Ventas = ventas(sequelize, Sequelize);
 
 
   //Seccion de CONSULTAS
@@ -52,6 +53,15 @@ sequelize
   });
 
   Produccion.findAll({ attributes: ['idProduccion','idProducto','cantidad','fecha'] })
+  .then(data => {
+    const consulta = JSON.stringify(data); //Esto nos devuelve el resultado de la consulta escrito como JSON pero en formato STRING
+    console.log(JSON.parse(consulta)) //Aca transformo el resultado de la consulta a JSON
+  })
+  .catch(err => {
+    console.log(err)
+  });
+
+  Ventas.findAll({ attributes: ['idVenta','fecha','idDetalle'] })
   .then(data => {
     const consulta = JSON.stringify(data); //Esto nos devuelve el resultado de la consulta escrito como JSON pero en formato STRING
     console.log(JSON.parse(consulta)) //Aca transformo el resultado de la consulta a JSON
