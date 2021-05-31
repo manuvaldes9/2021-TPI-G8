@@ -18,5 +18,9 @@
   "bugs": {
     "url": "https://github.com/FRRe-DACS/2021-TPI-G8/issues"
   },
-  "homepage": "https://github.com/FRRe-DACS/2021-TPI-G8#readme"
+  "homepage": "https://github.com/FRRe-DACS/2021-TPI-G8#readme",
+  "dependencies": {
+    "file-type": "^16.4.0",
+    "node-fetch": "^2.6.1"
+  }
 }
