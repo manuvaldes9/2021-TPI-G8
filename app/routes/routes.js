@@ -1,3 +1,5 @@
+const { usuarios } = require("../models/index.js");
+
 module.exports = app => {
     const produccion = require("../controllers/produccion.controller.js");
     const ventas = require("../controllers/ventas.controller.js");
@@ -13,4 +15,7 @@ module.exports = app => {
 
     //Recupera todos los productos
     router.get("/", productos.findAll);
+
+    //Recupera todos los usuarios
+    router.get("/", usuarios.findAll);
 }
