@@ -17,6 +17,9 @@ module.exports = (sequelize, Sequelize) => {
       },
       fecha: {
         type: Sequelize.DATE
+      },
+      unidad: {
+        type: Sequelize.STRING
       }
     });
   

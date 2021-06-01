@@ -4,7 +4,8 @@ module.exports = app => {
     // const productos = require("../controllers/productos.controller.js")
     const usuarios = require("../controllers/usuarios.controller.js");
     const producs = require("../controllers/producs.controller.js");
-
+    const libreria = require("../controllers/libreria.controller.js");
+    
     var router = require("express").Router();
 
     // //Recupera todas las producciones
@@ -21,4 +22,6 @@ module.exports = app => {
 
     //Recupera todos los productos detallado
     router.get("/", producs.findAll);
+
+    router.get("/", libreria.getNotificacion);
 }

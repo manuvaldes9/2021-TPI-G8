@@ -6,7 +6,7 @@ const cors = require("cors");
 const app = express(); //Inicializo express en una variable
 
 var corsOptions ={
-    origin: "localhost:8080"
+    origin: "localhost:3000"
 }
 
 app.use(cors(corsOptions));
@@ -25,12 +25,12 @@ const db = require("./app/models");
 db.sequelize.sync();
 
 app.get("/",(req,res) => {
-    res.json({ message: "Holiwis"})
+    res.json({ message: "Hola mundo"})
 });
 
 require("./app/routes/routes.js")(app);
 
-const PORT =  process.env.PORT || 8080;
+const PORT =  process.env.PORT || 3000;
 app.listen(PORT, () => {
     console.log(`Server is running on port ${PORT}.`);
 });
