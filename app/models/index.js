@@ -44,10 +44,11 @@ const db = {};
 db.Sequelize = Sequelize;
 db.sequelize = sequelize;
 
-db.produccion = require("./produccion.js")(sequelize, Sequelize);
-db.ventas = require("./ventas.js")(sequelize, Sequelize);
-db.productos = require("./productos.js")(sequelize, Sequelize);
+// db.produccion = require("./produccion.js")(sequelize, Sequelize);
+// db.ventas = require("./ventas.js")(sequelize, Sequelize);
+// db.productos = require("./productos.js")(sequelize, Sequelize);
 db.usuarios = require("./usuarios.js")(sequelize, Sequelize);
+db.producs = require("./producs.js")(sequelize, Sequelize);
 
 module.exports = db;
 // PASAMOS ESTA SECCION AL CONTROLADOR
