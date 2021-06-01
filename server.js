@@ -22,6 +22,7 @@ app.use(bodyParser.urlencoded({extended:true})); //Recibe "Form URL encoded"
 //console.log('La aplicacion está escuchando en http://localhost:3000')
 
 const db = require("./app/models");
+const { sequelize, Sequelize } = require('./app/models');
 db.sequelize.sync();
 
 app.get("/",(req,res) => {
@@ -34,8 +35,3 @@ const PORT =  process.env.PORT || 3000;
 app.listen(PORT, () => {
     console.log(`Server is running on port ${PORT}.`);
 });
-
-
-// const produccion = import('./app/controllers/produccion.controller.js');
-// produccion.findAll;
-// console.log(produccion.findAll);
