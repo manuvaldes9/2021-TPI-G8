@@ -10,3 +10,6 @@ Pasos:
 ## Para la librería
 
 < npm install node-fetch >
+
+Para el back
+npm install express sequelize mysql2 body-parser cors --save
