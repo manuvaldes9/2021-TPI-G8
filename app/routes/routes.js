@@ -13,6 +13,4 @@ module.exports = app => {
 
     //Recupera todos los productos
     router.get("/", productos.findAll);
-
-    
 }
