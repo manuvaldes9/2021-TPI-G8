@@ -1,6 +1,10 @@
+const db = require("../models");
+const productos = db.productos;
+const Op = db.sequelize.Op;
+
 //Definicion de consultas para tabla PRODUCTOS
-const productos = require("../models/productos.js");
-const Productos = productos(sequelize, Sequelize);
+// const productos = require("../models/productos.js");
+// const Productos = productos(sequelize, Sequelize);
 
 exports.findAll = (req, res) => {
     Productos.findAll({ attributes: ['EAN','nombre','precioKG','stock'] })
@@ -12,6 +16,5 @@ exports.findAll = (req, res) => {
     console.log(err)
     });
 };
-
 
 

@@ -1,6 +1,11 @@
+const db = require("../models");
+const produccion = db.produccion;
+const Op = db.sequelize.Op;
+
 //Definicion de consultas para tabla PRODUCCION
-const produccion = require("../models/produccion.js");
-const Produccion = produccion(sequelize, Sequelize);
+// const produccion = require("../models/produccion.js");
+// const Produccion = produccion(sequelize, Sequelize);
+
 
 exports.findAll = (req, res) => {
     Produccion.findAll({ attributes: ['idProduccion','idProducto','cantidad','fecha'] })

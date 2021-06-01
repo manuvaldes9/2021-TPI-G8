@@ -1,6 +1,10 @@
+const db = require("../models");
+const ventas = db.ventas;
+const Op = db.sequelize.Op;
 //Definicion de consultas para tabla VENTAS
-const ventas = require("../models/ventas.js");
-const Ventas = ventas(sequelize, Sequelize);
+// const ventas = require("../models/ventas.js");
+// const Ventas = ventas(sequelize, Sequelize);
+
 
 exports.findAll = (req, res) => {
     Ventas.findAll({ attributes: ['idVenta','fecha','idDetalle'] })
@@ -12,3 +16,4 @@ exports.findAll = (req, res) => {
     console.log(err)
     });
 };
+

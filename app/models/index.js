@@ -10,6 +10,7 @@ const Sequelize = require("sequelize");
 const sequelize = new Sequelize(dbConfig.DB, dbConfig.USER, dbConfig.PASSWORD, {
   host: dbConfig.HOST,
   dialect: dbConfig.dialect,
+  operatorAliases: false,
 
   pool: {
     max: dbConfig.pool.max,
@@ -28,14 +29,14 @@ const sequelize = new Sequelize(dbConfig.DB, dbConfig.USER, dbConfig.PASSWORD, {
 
 
 //Autenticacion a la BBDD
-sequelize
-  .authenticate()
-  .then(() => {
-    console.log('Connection has been established');
-  })
-  .catch((err) => {
-    console.error('Unable to connecto to db: ' + err);
-  });
+// sequelize
+//   .authenticate()
+//   .then(() => {
+//     console.log('Connection has been established');
+//   })
+//   .catch((err) => {
+//     console.error('Unable to connecto to db: ' + err);
+//   });
 
 
 const db = {};
