@@ -1,26 +1,16 @@
 {
-  "name": "tpi-g8",
+  "name": "tpi-dacs",
   "version": "1.0.0",
-  "description": "Trabajo Práctico Integrador de Desarrollo de Aplicaciones Cliente-Servidor, realizado por el Grupo 8",
-  "main": "index.js",
+  "description": "",
+  "main": "server.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/FRRe-DACS/2021-TPI-G8.git"
-  },
-  "keywords": [
-    "TPI"
-  ],
   "author": "Grupo 8",
   "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/FRRe-DACS/2021-TPI-G8/issues"
-  },
-  "homepage": "https://github.com/FRRe-DACS/2021-TPI-G8#readme",
   "dependencies": {
-    "file-type": "^16.4.0",
-    "node-fetch": "^2.6.1"
+    "express": "^4.17.1",
+    "mysql2": "^2.2.5",
+    "sequelize": "^6.6.2"
   }
 }
