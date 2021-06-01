@@ -24,4 +24,15 @@ module.exports = app => {
     router.get("/", producs.findAll);
 
     router.get("/", libreria.getNotificacion);
+
+    app.get("/hola",(req,res) => {
+        try{
+            producs.findAll().then(result => res.write(result))
+        }
+        catch (error){
+            res.json(error);
+        }
+        //res.json( producs.findAll())
+    });
+    
 }

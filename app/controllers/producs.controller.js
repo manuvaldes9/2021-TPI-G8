@@ -20,7 +20,8 @@ exports.findAll = (req, res) => {
     })
     .then(data => {
       const consulta = JSON.stringify(data); //Esto nos devuelve el resultado de la consulta escrito como JSON pero en formato STRING
-      console.log(JSON.parse(consulta)) //Aca transformo el resultado de la consulta a JSON
+      return(consulta);
+      //console.log(JSON.parse(consulta)) //Aca transformo el resultado de la consulta a JSON
     })
     .catch(err => {
       console.log(err)
