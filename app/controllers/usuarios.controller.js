@@ -2,9 +2,6 @@ const db = require("../models");
 const usuarios = db.usuarios;
 const Op = db.sequelize.Op;
 
-//Definicion de consultas para tabla PRODUCTOS
-// const productos = require("../models/productos.js");
-// const Productos = productos(sequelize, Sequelize);
 
 exports.findAll = (req, res) => {
     usuarios.findAll({ attributes: ['usuario','contra'] })
