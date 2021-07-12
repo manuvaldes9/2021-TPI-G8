@@ -144,8 +144,9 @@ const generarRegistro = function (denom, ean, precioUn, unidadMed, cantProd, can
 	}
 
 	const sal = {
-		"denominacion": denom,
-		"codigo_ean": ean,
+		//"_id"
+		"denominacion": denom, //"denominacion"
+		"codigo_ean": ean, // "codigo_ean"
 		"precio_unidad": precioUn,
 		"unidad_medida": unidadMed,
 		"cantidad_prod": cantProd,
@@ -157,34 +158,18 @@ const generarRegistro = function (denom, ean, precioUn, unidadMed, cantProd, can
 
 //+"?username="+username+ "&password="+ password
 
-const loginMinisterio = function (url, user, pass) {
-	const logMinisterio = {
-		"_id":1,
-		"username": user,
-		"password": pass,
-		"token": "e7d26ea1-fc15-47b5-8974-b0bffec667273abdba"
-	}
-	return logMinisterio.token 
-
-	//PARA PROXIMA ENTREGA:
-	/*
-	fetch(url + "?username="+ new URLSearchParams({
-		username: user,
-		password: pass
-	}))
-		.then(response => response.json())
-		.then(json => {
-			if (json[0].password == pass) {
-				console.log(json[0].token)
-			} else {
-				console.error("Contraseña incorrecta");
-			}
-		}) 
-	*/
-
-		
-
+const loginMinisterio = async function (url, email, pass) {
+	const body = { email: email, password: pass };
+ 
+	const result = await fetch(url, {
+			method: 'post',
+			body:    JSON.stringify(body),
+			headers: { 'Content-Type': 'application/json' },
+		})
+	const sal = await result.json();
+	return sal.token;
 }
+
 module.exports = {
 	getNotificacion: getNotificacion,
 	postRegimen: postRegimen,
