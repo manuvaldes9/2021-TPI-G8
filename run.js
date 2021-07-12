@@ -1,4 +1,4 @@
-const empresas = require('./lib/grupo8.js');
+const empresas = require('lib-empresas');
 const api_regimen = 'https://60a829368532520017ae5a5f.mockapi.io/regimen';
 const api_notificacion = 'https://60a829368532520017ae5a5f.mockapi.io/notificaciones';
 const api_login = 'https://60a829368532520017ae5a5f.mockapi.io/login'
