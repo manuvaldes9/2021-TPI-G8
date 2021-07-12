@@ -1,6 +1,7 @@
 
 import logo from './logo.svg';
-import './App.css';
+
+gimport './App.css';
 import React, { Component } from "react";
 import ProductList from './components/principal.component'
 import { Link, Switch, Route } from "react-router-dom";
