@@ -66,7 +66,7 @@ export default class ProductList extends Component {
                               <tr>
                                 <td>{producto.nombre}</td>
                                 <td>{producto.EAN}</td>
-                                <td>{producto.precioKG}</td>
+                                <td>${producto.precioKG}</td>
                                 <td>{producto.cantidadP}</td>
                                 <td>{producto.cantidadV}</td>
                               </tr> 
