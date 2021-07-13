@@ -31,7 +31,7 @@ app.get('/', function (req,res) {
     res.sendFile(path + "index.html");
   });
 
-require("./app/routes/routes.js")(app);
+  require("./app/routes/routes.js")(app);
 
 const PORT =  process.env.PORT || 8000;
 app.listen(PORT, () => {

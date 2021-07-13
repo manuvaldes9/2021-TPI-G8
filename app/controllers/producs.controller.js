@@ -19,12 +19,12 @@ exports.findAll = (req, res) => {
                     "cantidadP",
                     "cantidadV",
                     "unidad",
-                ],
-                where: {
-                    fecha: {
-                        [Op.between]: [fecha2, fecha1],
-                    },
-                },
+                ]//,
+                // where: {
+                //     fecha: {
+                //         [Op.between]: [fecha2, fecha1],
+                //     },
+                // },
             })
                 .then((data) => {
                     // const consulta = JSON.stringify(data); //Esto nos devuelve el resultado de la consulta escrito como JSON pero en formato STRING
