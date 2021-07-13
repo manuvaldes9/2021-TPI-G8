@@ -2,21 +2,10 @@
 import http from "../http-common";
 
 class PrincipalDataService {
-  getAll() {
-    return http.get("/principal");
+  findAll() {
+    return http.get("/servicios");
   }
 
-  get(id) {
-    return http.get(`/principal/${id}`);
-  }
-
-  create(data) {
-    return http.post("/principal", data);
-  }
-
-  update(id, data) {
-    return http.put(`/principal/${id}`, data);
-  }
 }
 
 export default new PrincipalDataService();

@@ -1,8 +1,8 @@
 import React, { Component } from "react";
 import './App.css';
 import { Link, Switch, Route } from "react-router-dom";
-import ProductList from './components/principal.component'
-import PrincipalPage from "./components/servicios.component";
+import ProductList from './components/servicios.component'
+import PrincipalPage from "./components/principal.component";
 
 class App extends Component {
   render() {
