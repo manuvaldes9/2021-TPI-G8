@@ -53,16 +53,28 @@ export default class ProductList extends Component {
                           <div class="mb-3">
                             <label for="disabledTextInput" class="form-label">CUIT: 23-42450167-5</label>
                           </div>
-                       
-                          <ul className="list-group">
-                          {productos &&
-                            productos.map((producto, index) => (
-                              <li>
-                                {producto.nombre}
-                              </li>
-                            ))}
-                        </ul>
-                          
+                          <table class="table table-stripped table-bordered table-sm">
+                            <tbody>
+                              <tr>
+                                <td>Nombre Producto</td>
+                                <td>EAN</td>
+                                <td>Precio Unitario</td>
+                                <td>Cantidad Producida</td>
+                                <td>Cantidad Vendida</td>
+                              </tr>
+                              {productos && productos.map((producto) => (
+                              <tr>
+                                <td>{producto.nombre}</td>
+                                <td>{producto.EAN}</td>
+                                <td>{producto.precioKG}</td>
+                                <td>{producto.cantidadP}</td>
+                                <td>{producto.cantidadV}</td>
+                              </tr> 
+                                ))}
+
+                            </tbody>
+                          </table>
+
                           <div class="mb-3">
                             <div class="form-check">
                                 <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault"/>

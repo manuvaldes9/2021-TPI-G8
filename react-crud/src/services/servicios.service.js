@@ -3,7 +3,6 @@ import http from "../http-common";
 
 class PrincipalDataService {
   findAll() {
-    console.log('hola mundo llegue');
     return http.get("/getProductos");
   }
 

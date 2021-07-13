@@ -13,8 +13,6 @@ module.exports = app => {
 
  //   router.get("/", libreria.getNotificacion);
 
-  app.get("/getProductos", producs.findAll)
-
-   app.use('/api/servicios', router);
+  app.get("/getProductos", producs.findAll);
 
 };
