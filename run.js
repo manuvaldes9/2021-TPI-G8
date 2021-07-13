@@ -11,7 +11,7 @@ const api_login = 'https://cli-serv-grupo1.herokuapp.com/api/auth/login'
 // Login al ministerio
 //var token = async () => await empresas.loginMinisterio(api_login, "benjamin.kugler1996@gmail.com","123456").then(res => JSON.stringify(res.token)).then(sal => await sal);
 //console.log(token())
-empresas.loginMinisterio(api_login, "benjamin.kugler1996@gmail.com","123456").then(sal => console.log(sal))
+// empresas.loginMinisterio(api_login, "benjamin.kugler1996@gmail.com","123456").then(sal => console.log(sal))
 
 // //Generación de registros
 // const registro1 = empresas.generarRegistro("Ripio",1234567895825,3800,"m^3",3500,2698);
