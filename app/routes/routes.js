@@ -6,9 +6,6 @@ module.exports = app => {
     
     var router = require("express").Router();
 
-    //Recupera todos los usuarios
-    // app.get("/users", usuarios.findAll); 
-
     //Recupera todos los productos detallado
     app.get("/getProductos", producs.findAll)
 
