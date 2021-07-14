@@ -7,14 +7,12 @@ module.exports = app => {
     var router = require("express").Router();
 
     //Recupera todos los usuarios
-    app.get("/users", usuarios.findAll); 
+    // app.get("/users", usuarios.findAll); 
 
     //Recupera todos los productos detallado
     app.get("/getProductos", producs.findAll)
 
     app.get("/getNotificacion", libreria.getNotificacion); //NO ANDA, NO DEVUELVE NADA
-
-
 
     app.get('/', function(req, res) {
         res.sendFile(path.join(__dirname + '/login.html'));
@@ -24,15 +22,12 @@ module.exports = app => {
         usuarios.login(req, res);
     });
 
-    app.get("/home",(req,res) => {
-    res.json({ message: "Hola mundo"})
+    app.get('/home', function(req,res) {
+        if (req.session.loggedin) {
+            res.json({ message: "Hola mundo"})
+        }
     });
 
-    app.get("/probando", (req,res) => { 
-        const db = require("../models");
-        const usuarios = db.usuarios;
-        const Op = db.sequelize.Op; 
-        usuarios.findOne({ attributes: ['user','probando123']})
-    })
+   
 
 }

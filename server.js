@@ -14,6 +14,7 @@ var corsOptions ={
 
 //Es para informar a express que vamos a usar estos paquetes
 app.use(cors(corsOptions));
+
 app.use(session({ 
 	secret: 'secret',
 	resave: true,
@@ -29,10 +30,6 @@ app.use(router); //Sirve para usar los diferentes métodos (GET, POST, PUT, PATC
 const db = require("./app/models");
 const { sequelize, Sequelize } = require('./app/models');
 db.sequelize.sync();
-
-// app.get("/",(req,res) => {
-//     res.json({ message: "Hola mundo"})
-// });
 
 require("./app/routes/routes.js")(app);
 
