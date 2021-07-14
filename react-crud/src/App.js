@@ -32,7 +32,7 @@ class App extends Component {
               </header>        
           <div className="container mt-3">
             <Switch>
-              <Route exact path={["/", "/servicios"]} component={ProductList} />
+              <Route exact path={["/servicios"]} component={ProductList} />
               <Route exact path={["/", "/principal"]} component={PrincipalPage} />
             </Switch>
           </div>

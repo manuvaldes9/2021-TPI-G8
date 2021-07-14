@@ -1,17 +1,47 @@
 import React, { Component } from "react";
+import PrincipalService from "../services/principal.service";
 import { Link } from "react-router-dom";
 
 export default class PrincipalPage extends Component {
-    render() {
+constructor(props) {
+    super(props);
+    this.retrieveNotificaciones = this.retrieveNotificaciones.bind(this);
+      
+    this.state = {
+        notificaciones: []
+    };
+}
+componentDidMount(){
+    this.retrieveNotificaciones();
+}
     
+retrieveNotificaciones(){
+    PrincipalService.getNotificacion()
+    .then(response => {
+        this.setState({
+            notificaciones: response.data
+        });
+        console.log(response.data)
+    })
+    .catch(e => {
+        console.log(e);
+    });
+}
+   
+    render() {
+        const {notificaciones} = this.state;
+
         return (
             <main>
                <div class="alert alert-warning alert-dismissible fade show" role="alert">
-                <strong>¡Fecha límite cerca!</strong> La secretaría informo acerca de la tardanza para entregar la DJ
-                <button type="button" class="close" data-bs-dismiss="alert" aria-label="Close">
-                <span aria-hidden="true">&times;</span>
-                </button>
-            </div>
+                <strong>¡Fecha límite cerca!</strong>
+                                    {notificaciones && notificaciones.map((notificacion) => (
+                                        {notificacion}                                        
+                                    ))} 
+                    <button type="button" class="close" data-bs-dismiss="alert" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
 
             <main role="main" class="inner cover" id="central" >
                 <main>

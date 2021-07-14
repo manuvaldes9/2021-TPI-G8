@@ -45,7 +45,6 @@ export default class ProductList extends Component {
 
   render() {
     const {productos, currentIndex } = this.state;
-
     return (
         <main >
                     <form>    
