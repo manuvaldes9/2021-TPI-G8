@@ -1,6 +1,6 @@
 {
   "name": "lib-empresas",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "libreria de empresas",
   "main": "index.js",
   "scripts": {
