@@ -1,6 +1,6 @@
 {
   "name": "lib-empresas",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "description": "libreria de empresas",
   "main": "index.js",
   "scripts": {
@@ -8,12 +8,12 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/FRRe-DACS/2021-TPI-G8.git#lib"
+    "url": "git+https://github.com/FRRe-DACS/2021-TPI-G8.git#lib-dev"
   },
   "author": "majomartin",
   "license": "ISC",
   "bugs": {
     "url": "https://github.com/FRRe-DACS/2021-TPI-G8/issues"
   },
-  "homepage": "https://github.com/FRRe-DACS/2021-TPI-G8/tree/lib#readme"
+  "homepage": "https://github.com/FRRe-DACS/2021-TPI-G8/tree/lib-dev#readme"
 }
