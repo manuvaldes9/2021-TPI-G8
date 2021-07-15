@@ -1,13 +1,13 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
+// import notificar from './notificacion.component';
 
 export default class PrincipalPage extends Component {
     render() {
-    
         return (
             <main>
                <div class="alert alert-warning alert-dismissible fade show" role="alert">
-                <strong>¡Fecha límite cerca!</strong> La secretaría informo acerca de la tardanza para entregar la DJ
+                <div id="descripcion">No hay alertas disponibles</div>
                 <button type="button" class="close" data-bs-dismiss="alert" aria-label="Close">
                 <span aria-hidden="true">&times;</span>
                 </button>
