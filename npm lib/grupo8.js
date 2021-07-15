@@ -185,10 +185,6 @@ const loginMinisterio = function (url, user, pass) {
 		
 
 }
-//exports.printMsg = function() {
-//	console.log("This is a message from the demo package");
-  //}
-  
 module.exports = {
 	getNotificacion: getNotificacion,
 	postRegimen: postRegimen,
