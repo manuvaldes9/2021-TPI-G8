@@ -57,14 +57,13 @@ const generarRegimen = function (anio, mes, registros, fecha_carga, inputCuit, n
 
 	// Control sobre la fecha de carga, si es incorrecta hago que la función devuelva "undefined" que tengo entendido que es como vacío
 	if (typeof fecha_carga == 'undefined') {
-		fecha_carga = new Date().toISOString();
+		fecha_carga = new Date().getTime()		// antes en vez de .getTime() iba .toISOString();
 	} else {
 		if (typeof fecha_carga != 'string') {
 			console.error("La fecha debe ser un string");
 			return undefined;
 		} else {
-			fecha_carga = new Date(fecha_carga);
-			if (fecha_carga.getFullYear() < 2021) {
+			if (Date(fecha_carga).getFullYear() < 2021) {
 				console.error("Por favor revise la fecha de carga");
 				return undefined;
 			}
@@ -87,17 +86,20 @@ const generarRegimen = function (anio, mes, registros, fecha_carga, inputCuit, n
 
 	// Cargo los valores que fueron revisados y corregidos previamente a la variable de salida en forma de json.
 	sal = {
-		"periodo": {
-			"year": anio,
-			"month": mes
-		},
-		"listaRegistro": registros,
-		"date_upload": fecha_carga,
-		"day_limit": 10,
-		"infoEmpresa": {
+		"business": nombre_empresa // antes teníamos como está abajo
+		/*"infoEmpresa": {
 			"cuit": inputCuit,
 			"razon_social": nombre_empresa
 		}
+		*/,
+		"productsList": registros,	// "listaRegistro"
+		"date_added": fecha_carga, 	// "date_upload"
+		"dateLimit": 10, // "day_limit",
+		"period": { // "periodo"
+			"year": anio,
+			"month": mes
+		}
+		
 	};
 	return sal;
 };
@@ -111,7 +113,7 @@ const cargarRegistro = function (reg, listaReg) {
 	return listaReg;
 }
 
-const generarRegistro = function (denom, ean, precioUn, unidadMed, cantProd, cantVend) {
+const generarRegistro = function (id, denom, ean, precioUn, unidadMed, cantProd, cantVend) {
 
 	if (typeof denom != 'string') {
 		console.error("Compruebe que la denominacion ingresada sea correcta");
@@ -143,57 +145,57 @@ const generarRegistro = function (denom, ean, precioUn, unidadMed, cantProd, can
 		return undefined;
 	}
 
+	if (typeof id != 'string') {
+		console.error("El id debe ser un string");
+		return undefined;
+	} 
+
 	const sal = {
-		"denominacion": denom,
-		"codigo_ean": ean,
-		"precio_unidad": precioUn,
-		"unidad_medida": unidadMed,
-		"cantidad_prod": cantProd,
-		"cantidad_vend": cantVend
+		"_id" : id, // Nosotros inicialmente no teníamos este valor, no sabemos de dónde sale, pero es un string
+		"productName": denom, //"denominacion"
+		"eanCode": ean, // "codigo_ean"
+		"price": precioUn, // "precio_unidad"
+		"unit": unidadMed, // "unidad_medida"
+		"quantityProduced": cantProd, // "cantidad_prod"
+		"quentitySold": cantVend, // "cantidad_vend"
+		"report":{} //no cargo nada, porque todavía no se que va
+					// Ellos en su descripción de report tienen:
+					// Contains the information about the report in which this product has been added.
 	}
 
 	return sal;
 }
 
-//+"?username="+username+ "&password="+ password
 
-const loginMinisterio = function (url, user, pass) {
-	const logMinisterio = {
-		"_id":1,
-		"username": user,
-		"password": pass,
-		"token": "e7d26ea1-fc15-47b5-8974-b0bffec667273abdba"
-	}
-	return logMinisterio.token 
-
-	//PARA PROXIMA ENTREGA:
-	/*
-	fetch(url + "?username="+ new URLSearchParams({
-		username: user,
-		password: pass
-	}))
-		.then(response => response.json())
-		.then(json => {
-			if (json[0].password == pass) {
-				console.log(json[0].token)
-			} else {
-				console.error("Contraseña incorrecta");
-			}
-		}) 
-	*/
-
-		
-
+const loginMinisterio = async function (url, email, pass) {
+	const body = { email: email, password: pass };
+ 
+	const response = await fetch(url, {
+			method: 'post',
+			body:    JSON.stringify(body),
+			headers: { 'Content-Type': 'application/json' },
+		});
+	const sal = await response.json();
+	return sal.token;
 }
-//exports.printMsg = function() {
-//	console.log("This is a message from the demo package");
-  //}
-  
+
+const registroMinisterio = async function (url, email, pass, nombre) {
+	const body = { email: email, password: pass, name: nombre };
+	const result = await fetch(url, {
+			method: 'post',
+			body:    JSON.stringify(body),
+			headers: { 'Content-Type': 'application/json' },
+		})
+	const sal = await result.json();
+	return sal.token;
+}
+
 module.exports = {
 	getNotificacion: getNotificacion,
 	postRegimen: postRegimen,
 	loginMinisterio: loginMinisterio,
 	generarRegimen: generarRegimen,
 	generarRegistro: generarRegistro,
-	cargarRegistro: cargarRegistro
+	cargarRegistro: cargarRegistro,
+	registroMinisterio: registroMinisterio
 }
