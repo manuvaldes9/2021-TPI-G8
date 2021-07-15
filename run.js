@@ -25,7 +25,7 @@ var registro = empresas.registroMinisterio(api_registro,"mail1@falso.com","12345
 
 // Login al ministerio
 
-console.log(empresas.loginMinisterio(api_login, "benjamin.kugler1996@gmail.com","123456"))
+empresas.loginMinisterio(api_login, "benjamin.kugler1996@gmail.com","123456").then(console.log)
 
 // //Generación de registros
 // const registro1 = empresas.generarRegistro("Ripio",1234567895825,3800,"m^3",3500,2698);

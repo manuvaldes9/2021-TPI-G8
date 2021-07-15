@@ -175,8 +175,8 @@ const loginMinisterio = async function (url, email, pass) {
 			body:    JSON.stringify(body),
 			headers: { 'Content-Type': 'application/json' },
 		});
-	// const sal = await result.json();
-	// return sal.token;
+	const sal = await response.json();
+	return sal.token;
 }
 
 const registroMinisterio = async function (url, email, pass, nombre) {
