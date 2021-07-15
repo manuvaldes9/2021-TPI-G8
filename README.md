@@ -1,5 +1,3 @@
-# 2021-TPI-G8
-
 ## Para la librería
 
 < npm install lib-empresas >
