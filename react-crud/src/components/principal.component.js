@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import '../App.css'
 import PrincipalService from "../services/principal.service";
 import { Link } from "react-router-dom";
 
@@ -41,6 +42,7 @@ retrieveNotificaciones(){
                     <button type="button" class="close" data-bs-dismiss="alert" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
                     </button>
+                
                 </div>
 
             <main role="main" class="inner cover" id="central" >
