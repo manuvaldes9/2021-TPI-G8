@@ -13,6 +13,7 @@
     "bootstrap": "^5.0.1",
     "cors": "^2.8.5",
     "express": "^4.17.1",
+    "file-type": "^16.5.1",
     "lib-empresas": "^1.0.0",
     "mysql2": "^2.2.5",
     "node-fetch": "^2.6.1",

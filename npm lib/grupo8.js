@@ -170,6 +170,17 @@ const generarRegistro = function (id, denom, ean, precioUn, unidadMed, cantProd,
 const loginMinisterio = async function (url, email, pass) {
 	const body = { email: email, password: pass };
  
+	const response = await fetch(url, {
+			method: 'post',
+			body:    JSON.stringify(body),
+			headers: { 'Content-Type': 'application/json' },
+		});
+	// const sal = await result.json();
+	// return sal.token;
+}
+
+const registroMinisterio = async function (url, email, pass, nombre) {
+	const body = { email: email, password: pass, name: nombre };
 	const result = await fetch(url, {
 			method: 'post',
 			body:    JSON.stringify(body),
@@ -185,5 +196,6 @@ module.exports = {
 	loginMinisterio: loginMinisterio,
 	generarRegimen: generarRegimen,
 	generarRegistro: generarRegistro,
-	cargarRegistro: cargarRegistro
+	cargarRegistro: cargarRegistro,
+	registroMinisterio: registroMinisterio
 }
