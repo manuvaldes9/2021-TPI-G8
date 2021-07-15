@@ -1,5 +1,3 @@
-
-
 ## Para la librería
 
 < npm install lib-empresas >
