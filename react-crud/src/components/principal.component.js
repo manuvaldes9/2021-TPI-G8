@@ -1,89 +1,32 @@
+import dacsEmpresas from "dacs-empresas";
 import React, { Component } from "react";
-import PrincipalDataService from "../services/principal.service";
 import { Link } from "react-router-dom";
+const api_notificacion = 'https://60a829368532520017ae5a5f.mockapi.io/notificaciones';
+// import notificar from './notificacion.component';
 
-export default class ProductList extends Component {
-  constructor(props) {
-    super(props);
-    this.retrieveTutorials = this.retrieveTutorials.bind(this);
-    this.refreshList = this.refreshList.bind(this);
-
-    this.state = {
-      tutorials: [],
-      currentTutorial: null,
-      currentIndex: -1,
-      searchTitle: ""
-    };
-  }
-
-  componentDidMount() {
-    this.retrieveTutorials();
-  }
+dacsEmpresas.getNotificacion(api_notificacion,"9a9c8b7e-c249-4cb5-a171-655502d0c89e").then().then(sal => localStorage.setItem("notificacion",JSON.stringify(sal)))
+var notif = JSON.parse(localStorage.getItem("notificacion"));
 
 
-  retrieveTutorials() {
-    PrincipalDataService.getAll()
-      .then(response => {
-        this.setState({
-          tutorials: response.data
-        });
-        console.log(response.data);
-      })
-      .catch(e => {
-        console.log(e);
-      });
-  }
+export default class PrincipalPage extends Component {
+    render() {
+        return (
+            <main>
+               <div class="alert alert-warning alert-dismissible fade show" role="alert">
+                <div id="descripcion">{notif}</div>
+                <button type="button" class="close" data-bs-dismiss="alert" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
 
-  refreshList() {
-    this.retrieveTutorials();
-    this.setState({
-      currentTutorial: null,
-      currentIndex: -1
-    });
-  }
-
-
-  render() {
-    const { searchTitle, tutorials, currentTutorial, currentIndex } = this.state;
-
-    return (
-        <main >
-                    <form>    
-                          <legend>Declaración Jurada</legend>
-                          <div class="mb-3">
-                            <label for="disabledTextInput" class="form-label">CUIT: 23-42450167-5</label>
-                          </div>
-                         <table class="table table-stripped table-bordered table-sm">
-                             <tbody>
-                                <tr>
-                                    <td>Nombre Producto</td>
-                                    <td>EAN</td>
-                                    <td>Precio Unitario</td>
-                                    <td>Cantidad Producida</td>
-                                    <td>Cantidad Vendida</td>
-                                </tr>
-                                <tr>
-                                    <td>Maderas Algarrobo</td>
-                                    <td>589316565512</td>
-                                    <td>1200</td>
-                                    <td>150</td>
-                                    <td>80</td>
-                                </tr>
-                            </tbody>
-                         </table>
-                          
-                          <div class="mb-3">
-                            <div class="form-check">
-                                <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault"/>
-                                <label class="form-check-label" for="flexCheckDefault">
-                                  JURO QUE ESTOS DATOS SON CORRECTOS
-                                </label>
-                            </div>
-                          </div>
-                          <button type="submit" class="btn btn-primary">Enviar Declaracion</button>                
-                      </form>
-          </main>
-    
-      );
-  }
+            <main role="main" class="inner cover" id="central" >
+                <main>
+                    <h1 class="cover-heading">Una empresa que vende ripio.</h1>
+                    <p class="lead">Vendemos un par de cosas mas, pero tambien tenemos ripio.</p>
+                </main>
+            </main>          
+            </main>
+        
+          );
+      }
 }
