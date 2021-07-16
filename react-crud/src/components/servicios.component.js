@@ -1,3 +1,4 @@
+import dacsEmpresas from "dacs-empresas";
 import React, { Component } from "react";
 import PrincipalDataService from "../services/servicios.service";
 import 'react-smart-data-table/dist/react-smart-data-table.css'
