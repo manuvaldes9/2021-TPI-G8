@@ -12,7 +12,9 @@ ReactDOM.render(
       <Auth0Provider 
       domain="grupo8-tpi.us.auth0.com" 
       clientId="CXKqDkfXlEjROqsE4X6vTvElHHuqYBxc" 
-      redirectUri={window.location.origin}>
+      redirectUri={window.location.origin}
+      useRefreshTokens
+      cacheLocation="localstorage">
         <App />
       </Auth0Provider>
     </React.StrictMode>
