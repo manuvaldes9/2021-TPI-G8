@@ -16,7 +16,7 @@ exports.regimen = (req, res) => {
             const fecha_actual = new Date;
             const anio_actual = fecha_actual.getFullYear();
             const mes_actual = fecha_actual.getMonth();
-            regimen = empresas.generarRegimen(anio_actual, mes_actual, lista);
+            regimen = empresas.generarRegimen(2021, 02, lista);
             var token = req.query.token;
             res.json(empresas.postRegimen(api_regimen, regimen, token));
          })
