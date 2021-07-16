@@ -6,9 +6,8 @@ import ProductList from './components/servicios.component'
 import PrincipalPage from "./components/principal.component";
 import { useAuth0 } from "@auth0/auth0-react";
 import Login from "./components/login.component";
-import {LoginButton} from './components/login.component'
 import {LogoutButton} from "./components/logout.component";
-import {NotificacionButton} from "./components/notificacion.component";
+import {LoginButton} from "./components/login.component";
 
 function App() {
   const{ isAuthenticated } = useAuth0();
@@ -45,12 +44,13 @@ function App() {
                 </li>
                 <li class="nav-item">
                   <LogoutButton/> 
-                  <NotificacionButton/>
                 </li>
                   </>
                   ) : (
                     <li class="nav-item">
-                    <Route exact path={["/", "/login" ]}component={Login} />
+                        <Link to={"/"}>
+                          <LoginButton />
+                        </Link>
                     </li>
                   )}
               </ul>
@@ -62,7 +62,7 @@ function App() {
     <Switch>
       <Route exact path={["/servicios"]} component={ProductList} />
       <Route exact path={["/principal"]} component={PrincipalPage} />
-      <Route exact path={["/", "/login" ]}component={Login} />
+      
     </Switch>
   </div>
   <footer class="mastfoot mt-auto text-center">

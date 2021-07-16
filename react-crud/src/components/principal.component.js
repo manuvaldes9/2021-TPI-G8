@@ -1,23 +1,23 @@
+import dacsEmpresas from "dacs-empresas";
 import React, { Component } from "react";
-import '../App.css'
 import { Link } from "react-router-dom";
-const empresas = require('dacs-empresas');
-const api_login = 'https://cli-serv-grupo1.herokuapp.com/api/auth/login'
+const api_notificacion = 'https://60a829368532520017ae5a5f.mockapi.io/notificaciones';
+// import notificar from './notificacion.component';
+
+dacsEmpresas.getNotificacion(api_notificacion,"9a9c8b7e-c249-4cb5-a171-655502d0c89e").then().then(sal => localStorage.setItem("notificacion",JSON.stringify(sal)))
+var notif = JSON.parse(localStorage.getItem("notificacion"));
 
 
 export default class PrincipalPage extends Component {
-  
     render() {
         return (
             <main>
                <div class="alert alert-warning alert-dismissible fade show" role="alert">
-                <strong>¡Fecha límite cerca! </strong>
-                                
-                    <button type="button" class="close" data-bs-dismiss="alert" aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
-                    </button>
-                
-                </div>
+                <div id="descripcion">{notif}</div>
+                <button type="button" class="close" data-bs-dismiss="alert" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
 
             <main role="main" class="inner cover" id="central" >
                 <main>
