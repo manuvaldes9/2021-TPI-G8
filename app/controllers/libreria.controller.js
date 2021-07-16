@@ -32,7 +32,7 @@ exports.regimen = (req, res) => {
             const fecha_actual = new Date;
             const anio_actual = fecha_actual.getFullYear();
             const mes_actual = fecha_actual.getMonth();
-            regimen = empresas.generarRegimen(2019, 6, lista);
+            regimen = empresas.generarRegimen(anio_actual, mes_actual, lista);
             var token = req.query.token;
             res.json(empresas.postRegimen(api_regimen, regimen, token));
          })
