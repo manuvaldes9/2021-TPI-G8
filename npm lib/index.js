@@ -16,16 +16,22 @@ async function getNotificacion(url, token, res) {
 			.then(data => {
 				return data;
 			});
-		return datos;
+		if (datos[0].descripcion == undefined) {
+			sal = "No hay notificaciones";
+		} else {
+			sal = datos[0].descripcion;
+		}
+		return sal;
 	// }
 	// Buscar notificación por ID puede ser útil si el usuario quiere ver en detalle una notificación específica
 }
 
-const postRegimen = function (url, cuerpo) {
+const postRegimen = function (url, cuerpo, token) {
 	fetch(url, {
 		method: 'POST', //acá le digo que lo que quiero hacer es un post
 		body: JSON.stringify(cuerpo), //acá paso lo que me ingresan como json a texto
-		headers: { 'Content-Type': 'application/json' } //acá le aviso que lo que le paso como texto es un json
+		headers: { 'Content-Type': 'application/json',
+					'Authorization': ('Bearer '+token) } //acá le aviso que lo que le paso como texto es un json
 	}) //el procedimiento de antes lo hago porque en la documentación lo hacen así
 		.then(res => res.json())
 		.then(json => {
@@ -35,7 +41,7 @@ const postRegimen = function (url, cuerpo) {
 		.catch(err => console.log(err));
 }
 
-const generarRegimen = function (anio, mes, registros, fecha_carga, inputCuit, nombre_empresa) {
+const generarRegimen = function (anio, mes, registros) {
 	//Inicializo la variable sal
 	var sal = {};
 
@@ -55,46 +61,46 @@ const generarRegimen = function (anio, mes, registros, fecha_carga, inputCuit, n
 		mes = mes.toString()
 	}
 
-	// Control sobre la fecha de carga, si es incorrecta hago que la función devuelva "undefined" que tengo entendido que es como vacío
-	if (typeof fecha_carga == 'undefined') {
-		fecha_carga = new Date().getTime()		// antes en vez de .getTime() iba .toISOString();
-	} else {
-		if (typeof fecha_carga != 'string') {
-			console.error("La fecha debe ser un string");
-			return undefined;
-		} else {
-			if (Date(fecha_carga).getFullYear() < 2021) {
-				console.error("Por favor revise la fecha de carga");
-				return undefined;
-			}
-		}
-	}
+	// // Control sobre la fecha de carga, si es incorrecta hago que la función devuelva "undefined" que tengo entendido que es como vacío
+	// if (typeof fecha_carga == 'undefined') {
+	// 	fecha_carga = new Date().getTime()		// antes en vez de .getTime() iba .toISOString();
+	// } else {
+	// 	if (typeof fecha_carga != 'string') {
+	// 		console.error("La fecha debe ser un string");
+	// 		return undefined;
+	// 	} else {
+	// 		if (Date(fecha_carga).getFullYear() < 2021) {
+	// 			console.error("Por favor revise la fecha de carga");
+	// 			return undefined;
+	// 		}
+	// 	}
+	// }
 
-	// Control sobre el cuit, si es incorrecto hago que la función devuelva "undefined" que tengo entendido que es como vacío
-	if (inputCuit < 9999999999 || inputCuit > 99999999999 || inputCuit.length > 11) {
-		console.error("Por favor revise el CUIT, este debe tener al 11 cifras sin espacios, puntos o guiones.");
-		return undefined;
-	} else {
-		inputCuit = parseInt(inputCuit);
-	}
+	// // Control sobre el cuit, si es incorrecto hago que la función devuelva "undefined" que tengo entendido que es como vacío
+	// if (inputCuit < 9999999999 || inputCuit > 99999999999 || inputCuit.length > 11) {
+	// 	console.error("Por favor revise el CUIT, este debe tener al 11 cifras sin espacios, puntos o guiones.");
+	// 	return undefined;
+	// } else {
+	// 	inputCuit = parseInt(inputCuit);
+	// }
 
 	// Control sobre el nombre de la empresa, si es incorrecto hago que la función devuelva "undefined" que tengo entendido que es como vacío
-	if (typeof nombre_empresa != 'string') {
-		console.error("Por favor revise el nombre de la empresa");
-		return undefined;
-	}
+	// if (typeof nombre_empresa != 'string') {
+	// 	console.error("Por favor revise el nombre de la empresa");
+	// 	return undefined;
+	// }
 
 	// Cargo los valores que fueron revisados y corregidos previamente a la variable de salida en forma de json.
 	sal = {
-		"business": nombre_empresa // antes teníamos como está abajo
+		// "business": nombre_empresa // antes teníamos como está abajo
 		/*"infoEmpresa": {
 			"cuit": inputCuit,
 			"razon_social": nombre_empresa
-		}
-		*/,
+		},
+		*/
 		"productsList": registros,	// "listaRegistro"
-		"date_added": fecha_carga, 	// "date_upload"
-		"dateLimit": 10, // "day_limit",
+		// "date_added": fecha_carga, 	// "date_upload"
+		// "dateLimit": 10, // "day_limit",
 		"period": { // "periodo"
 			"year": anio,
 			"month": mes
@@ -157,7 +163,7 @@ const generarRegistro = function (id, denom, ean, precioUn, unidadMed, cantProd,
 		"price": precioUn, // "precio_unidad"
 		"unit": unidadMed, // "unidad_medida"
 		"quantityProduced": cantProd, // "cantidad_prod"
-		"quentitySold": cantVend, // "cantidad_vend"
+		"quantitySold": cantVend, // "cantidad_vend"
 		"report":{} //no cargo nada, porque todavía no se que va
 					// Ellos en su descripción de report tienen:
 					// Contains the information about the report in which this product has been added.
@@ -198,4 +204,5 @@ module.exports = {
 	generarRegistro: generarRegistro,
 	cargarRegistro: cargarRegistro,
 	registroMinisterio: registroMinisterio
+	// registrarEmpresa: registrarEmpresa
 }

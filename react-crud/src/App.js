@@ -8,12 +8,6 @@ const empresas = require('dacs-empresas');
 const api_login = 'https://cli-serv-grupo1.herokuapp.com/api/auth/login'
 
 
-localStorage.clear();
-
-function prueba() {
-  empresas.loginMinisterio(api_login, "benjamin.kugler1996@gmail.com","123456").then().then(tkn => localStorage.setItem("token", tkn));
-  // alert(localStorage.getItem("token"));
-}
 
 class App extends Component {
   render() {
