@@ -22,15 +22,11 @@ export default class ProductList extends Component {
   constructor(props) {
     super(props);
     this.retrieveProductos = this.retrieveProductos.bind(this);
-    this.refreshList = this.refreshList.bind(this);
-    this.postRegimen = this.postRegimen.bind(this);
     this.isChecked=this.isChecked.bind(this);
     this.state={isHidden : false } // button will not be hidden initally.
     this.state = {
       productos: [],
-      currentProducto: null,
-      currentIndex: -1,
-      searchTitle: ""
+      currentIndex: -1
     };
   }
   
@@ -50,21 +46,6 @@ export default class ProductList extends Component {
         console.log(e);
       });
   }
-
-  refreshList() {
-    this.retrieveProductos();
-    this.setState({
-      currentProducto: null,
-      currentIndex: -1
-    });
-  }
-
-  
-  postRegimen(){
-    dacsEmpresas.postRegimen(api_regimen, regimen);
-    alert('notificacion enviada satisfactoriamente')
-  }
- 
 
 
   isChecked = () => {
