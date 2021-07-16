@@ -2,11 +2,6 @@
 import React, { Component } from "react";
 import './App.css';
 import { Link, Switch, Route } from "react-router-dom";
-// import ProductList from './components/principal.component'
-// import PrincipalPage from "./components/servicios.component";
-// import notificar from "./components/notificacion.component"
-// const empresas = require('dacs-empresas');
-// const api_login = 'https://cli-serv-grupo1.herokuapp.com/api/auth/login'
 import ProductList from './components/servicios.component'
 import PrincipalPage from "./components/principal.component";
 import { useAuth0 } from "@auth0/auth0-react";
@@ -57,6 +52,7 @@ function App() {
                   ) : (
                     <li className="nav-item">
                         <Link to={"/"}>
+                          {localStorage.clear()}
                           <LoginButton />
                         </Link>
                     </li>
@@ -77,6 +73,7 @@ function App() {
       </div>
   </footer>   */}
   <Footer/> 
+  <hr></hr>
   <hr></hr>
   <hr></hr>
   <hr></hr>

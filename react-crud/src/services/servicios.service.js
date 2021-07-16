@@ -6,8 +6,8 @@ class PrincipalDataService {
     return http.get("/getProductos");
   }
 //agregar variable de entrada token
-  postRegimen(){
-    return http.post("/regimen?token=",)
+  postRegimen(data){
+    return http.post("/regimen?token=" + data)
   }
 }
 
