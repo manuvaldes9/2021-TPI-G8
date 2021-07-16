@@ -10,11 +10,5 @@ module.exports = app => {
 
     //Recupera todos los productos detallado
     app.get("/getProductos", producs.findAll);
-
-    app.get("/getNotificacion", libreria.getNotificacion); //NO ANDA, NO DEVUELVE NADA
-
-  app.get("/getNotificacion", libreria.getNotificacion);
-
-  app.get("/getProductos", producs.findAll);
-
+    app.post("/regimen", libreria.regimen);
 };

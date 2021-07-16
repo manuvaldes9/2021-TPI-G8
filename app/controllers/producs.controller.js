@@ -19,12 +19,12 @@ exports.findAll = (req, res) => {
                     "cantidadP",
                     "cantidadV",
                     "unidad",
-                ]//,
-                // where: {
-                //     fecha: {
-                //         [Op.between]: [fecha2, fecha1],
-                //     },
-                // },
+                ],
+                where: {
+                    fecha: {
+                        [Op.between]: [fecha2, fecha1],
+                    },
+                },
             })
                 .then((data) => {
                     res.json(data);

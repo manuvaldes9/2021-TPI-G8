@@ -35,10 +35,10 @@ const postRegimen = function (url, cuerpo, token) {
 					'Authorization': ('Bearer '+token) } //acá le aviso que lo que le paso como texto es un json
 	}) //el procedimiento de antes lo hago porque en la documentación lo hacen así
 		.then(res => res.json())
-		.then(json => {
-			console.log("Se cargó correctamente el siguiente registro: ");
-			console.log(json)
-		})
+		// .then(json => {
+		// 	console.log("Se cargó correctamente el siguiente registro: ");
+		// 	console.log(json)
+		// })
 		.catch(err => console.log(err));
 }
 

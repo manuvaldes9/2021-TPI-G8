@@ -1,6 +1,6 @@
 {
   "name": "dacs-empresas",
-  "version": "1.0.6",
+  "version": "1.0.7",
   "description": "paquete libreria de empresas grupo 8",
   "main": "index.js",
   "scripts": {
