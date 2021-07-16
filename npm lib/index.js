@@ -197,6 +197,7 @@ const registroMinisterio = async function (url, email, pass, nombre) {
 	return sal.token;
 }
 
+
 module.exports = {
 	getNotificacion: getNotificacion,
 	postRegimen: postRegimen,
