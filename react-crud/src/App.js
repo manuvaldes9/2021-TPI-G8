@@ -48,7 +48,6 @@ function App() {
                   ) : (
                     <li className="nav-item">
                         <Link to={"/"}>
-                          {localStorage.clear()}
                           <LoginButton />
                         </Link>
                     </li>
