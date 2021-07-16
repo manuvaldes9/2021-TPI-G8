@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 const api_notificacion = 'https://60a829368532520017ae5a5f.mockapi.io/notificaciones';
 // import notificar from './notificacion.component';
 
-dacsEmpresas.getNotificacion(api_notificacion,"9a9c8b7e-c249-4cb5-a171-655502d0c89e").then().then(sal => localStorage.setItem("notificacion",JSON.stringify(sal)))
+dacsEmpresas.getNotificacion(api_notificacion,"9a9c8b7e-c249-4cb5-a171-655502d0c89e").then().then(sal => localStorage.setItem("notificacion",sal))
 //var notif = JSON.parse(localStorage.getItem("notificacion"));
 var descripcion = localStorage.getItem("notificacion");
 
