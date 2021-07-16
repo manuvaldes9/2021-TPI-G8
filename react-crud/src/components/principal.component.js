@@ -1,44 +1,18 @@
 import React, { Component } from "react";
 import '../App.css'
-import PrincipalService from "../services/principal.service";
 import { Link } from "react-router-dom";
+const empresas = require('dacs-empresas');
+const api_login = 'https://cli-serv-grupo1.herokuapp.com/api/auth/login'
+
 
 export default class PrincipalPage extends Component {
-constructor(props) {
-    super(props);
-    this.retrieveNotificaciones = this.retrieveNotificaciones.bind(this);
-      
-    this.state = {
-        notificaciones: []
-    };
-}
-componentDidMount(){
-    this.retrieveNotificaciones();
-}
-    
-retrieveNotificaciones(){
-    PrincipalService.getNotificacion()
-    .then(response => {
-        this.setState({
-            notificaciones: response.data
-        });
-        console.log(response.data)
-    })
-    .catch(e => {
-        console.log(e);
-    });
-}
-   
+  
     render() {
-        const {notificaciones} = this.state;
-
         return (
             <main>
                <div class="alert alert-warning alert-dismissible fade show" role="alert">
-                <strong>¡Fecha límite cerca!</strong>
-                                    {notificaciones && notificaciones.map((notificacion) => (
-                                        {notificacion}                                        
-                                    ))} 
+                <strong>¡Fecha límite cerca! </strong>
+                                
                     <button type="button" class="close" data-bs-dismiss="alert" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
                     </button>

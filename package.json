@@ -1,25 +1,31 @@
 {
-  "name": "tpi-dacs",
+  "name": "2021-tpi-g8",
   "version": "1.0.0",
-  "description": "",
-  "main": "server.js",
+  "description": "< npm install dacs-empresas >",
+  "main": "run.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
   },
-  "author": "Grupo 8",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/FRRe-DACS/2021-TPI-G8.git"
+  },
+  "author": "",
   "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/FRRe-DACS/2021-TPI-G8/issues"
+  },
+  "homepage": "https://github.com/FRRe-DACS/2021-TPI-G8#readme",
   "dependencies": {
-    "auth0": "^2.35.1",
     "axios": "^0.21.1",
     "body-parser": "^1.19.0",
-    "bootstrap": "^5.0.1",
     "cors": "^2.8.5",
+    "dacs-empresas": "^1.0.1",
     "express": "^4.17.1",
     "express-session": "^1.17.2",
-    "lib-empresas": "^1.0.0",
     "mysql2": "^2.2.5",
     "node-fetch": "^2.6.1",
-    "react-router-dom": "^5.2.0",
-    "sequelize": "^6.6.2"
+    "sequelize": "^6.6.5"
   }
 }
