@@ -16,10 +16,6 @@ import Footer from "./components/footer.component";
 
 function App() {
   const{ isAuthenticated } = useAuth0();
-  
-
-
-
     return (
       
 <div className='text-center'>
